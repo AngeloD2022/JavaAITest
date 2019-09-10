@@ -27,6 +27,33 @@ public class Layer {
         return neurons.length;
     }
     
+    public void setInputActivations(double[] activations){
+        
+        if(activations.length != neurons.length){
+            //throw error
+        }else{
+            for(int i = 0; i< neurons.length; i++){
+                neurons[i].setActivation(activations[i]);
+            }
+        }
+        
+        
+    }
+    
+    public void computeActivations(Layer previousLayer){
+        for(int i = 0; i < neurons.length; i++){
+            neurons[i].computeActivation(previousLayer);
+        }
+    }
+    
+    public double[] getActivations(){
+        double[] result = new double[neurons.length];
+        for(int i = 0; i < neurons.length; i++){
+            result[i] = neurons[i].getActivation();
+        }
+        return result;
+    }
+    
     
     
 }
